@@ -6,9 +6,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        var appid = "866020";
-        var username = "qzddwoygxfrom";
-        var password = "ypnbh@6!hdiEK";
+        var appid = args[0];
+        var username = args[1];
+        var password = args[2];
         var steamClient = new SteamClient();
         var manager = new CallbackManager(steamClient);
         var steamUser = steamClient.GetHandler<SteamUser>();
