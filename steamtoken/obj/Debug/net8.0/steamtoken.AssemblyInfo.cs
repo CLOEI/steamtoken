@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("steamtoken")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2ec4dbebaf3149eac96d759f2236be523978d96f")]
 [assembly: System.Reflection.AssemblyProductAttribute("steamtoken")]
 [assembly: System.Reflection.AssemblyTitleAttribute("steamtoken")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

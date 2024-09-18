@@ -10,6 +10,7 @@ Get your steam game session token
 
 - Spawn the application with argument `appid username password`
 - Read the console output for the token
+- Output will be appSessionTicket delimited by `\n` encryptedTicket ( Both value would be base64 encoded )
 
 ## Example
 

@@ -17,3 +17,4 @@ D:\Projects\steamtoken\steamtoken\obj\Debug\net8.0\refint\steamtoken.dll
 D:\Projects\steamtoken\steamtoken\obj\Debug\net8.0\steamtoken.pdb
 D:\Projects\steamtoken\steamtoken\obj\Debug\net8.0\steamtoken.genruntimeconfig.cache
 D:\Projects\steamtoken\steamtoken\obj\Debug\net8.0\ref\steamtoken.dll
+D:\Projects\steamtoken\steamtoken\obj\Debug\net8.0\steamtoken.sourcelink.json

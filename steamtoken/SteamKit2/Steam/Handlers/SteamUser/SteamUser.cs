@@ -14,7 +14,6 @@ namespace SteamKit2
     /// </summary>
     public sealed partial class SteamUser : ClientMsgHandler
     {
-
         /// <summary>
         /// Represents the chat mode for logging into Steam.
         /// </summary>
@@ -41,6 +40,7 @@ namespace SteamKit2
             /// </summary>
             /// <value>The username.</value>
             public string? Username { get; set; }
+
             /// <summary>
             /// Gets or sets the password.
             /// </summary>
@@ -70,17 +70,20 @@ namespace SteamKit2
             /// </summary>
             /// <value>The auth code.</value>
             public string? AuthCode { get; set; }
+
             /// <summary>
             /// Gets or sets the 2-factor auth code used to login. This is the code that can be received from the authenticator apps.
             /// </summary>
             /// <value>The two factor auth code.</value>
             public string? TwoFactorCode { get; set; }
+
             /// <summary>
             /// Gets or sets the 'Should Remember Password' flag. This is used in combination with the <see cref="AccessToken"/> for password-less login.
             /// Set this to true when <see cref="Authentication.AuthSessionDetails.IsPersistentSession"/> is set to true.
             /// </summary>
             /// <value>The 'Should Remember Password' flag.</value>
             public bool ShouldRememberPassword { get; set; }
+
             /// <summary>
             /// Gets or sets the access token used to login. This a token that has been provided after a successful login using <see cref="Authentication"/>.
             /// </summary>
@@ -94,6 +97,7 @@ namespace SteamKit2
             /// <seealso cref="SteamKit2.SteamID.DesktopInstance"/>
             /// <seealso cref="SteamKit2.SteamID.ConsoleInstance"/>
             public uint AccountInstance { get; set; }
+
             /// <summary>
             /// Gets or sets the account ID used for connecting clients when using the Console instance.
             /// </summary>
@@ -117,28 +121,31 @@ namespace SteamKit2
             /// </summary>
             /// <value>The client operating system type.</value>
             public EOSType ClientOSType { get; set; }
+
             /// <summary>
             /// Gets or sets the client language.
             /// </summary>
             /// <value>The client language.</value>
             public string ClientLanguage { get; set; }
+
             /// <summary>
             /// Gets or sets the machine name.
             /// </summary>
             /// <value>The machine name.</value>
             public string? MachineName { get; set; } = $"{Environment.MachineName} (SteamKit2)";
+
             /// <summary>
             /// Gets or sets the chat mode.
             /// </summary>
             /// <value>The chat mode.</value>
             public ChatMode ChatMode { get; set; } = ChatMode.Default;
-            
+
             /// <summary>
             /// Gets or sets the ui mode.
             /// </summary>
             /// <value>The ui mode.</value>
             public EUIMode UIMode { get; set; } = EUIMode.Unknown;
-            
+
             /// <summary>
             /// Gets or sets whether this is Steam Deck login.
             /// </summary>
@@ -174,6 +181,7 @@ namespace SteamKit2
             /// </summary>
             /// <value>The client operating system type.</value>
             public EOSType ClientOSType { get; set; }
+
             /// <summary>
             /// Gets or sets the client language.
             /// </summary>
@@ -199,18 +207,19 @@ namespace SteamKit2
             get { return this.Client.SteamID; }
         }
 
-        private static CallbackMsg? GetCallback( IPacketMsg packetMsg ) => packetMsg.MsgType switch
+        private static CallbackMsg? GetCallback(IPacketMsg packetMsg) => packetMsg.MsgType switch
         {
-            EMsg.ClientLogOnResponse => new LoggedOnCallback( packetMsg ),
-            EMsg.ClientLoggedOff => new LoggedOffCallback( packetMsg ),
-            EMsg.ClientSessionToken => new SessionTokenCallback( packetMsg ),
-            EMsg.ClientAccountInfo => new AccountInfoCallback( packetMsg ),
-            EMsg.ClientEmailAddrInfo => new EmailAddrInfoCallback( packetMsg ),
-            EMsg.ClientWalletInfoUpdate => new WalletInfoCallback( packetMsg ),
-            EMsg.ClientRequestWebAPIAuthenticateUserNonceResponse => new WebAPIUserNonceCallback( packetMsg ),
-            EMsg.ClientVanityURLChangedNotification => new VanityURLChangedCallback( packetMsg ),
-            EMsg.ClientMarketingMessageUpdate2 => new MarketingMessageCallback( packetMsg ),
-            EMsg.ClientPlayingSessionState => new PlayingSessionStateCallback( packetMsg ),
+            EMsg.ClientLogOnResponse => new LoggedOnCallback(packetMsg),
+            EMsg.ClientLoggedOff => new LoggedOffCallback(packetMsg),
+            EMsg.ClientSessionToken => new SessionTokenCallback(packetMsg),
+            EMsg.ClientAccountInfo => new AccountInfoCallback(packetMsg),
+            EMsg.ClientEmailAddrInfo => new EmailAddrInfoCallback(packetMsg),
+            EMsg.ClientWalletInfoUpdate => new WalletInfoCallback(packetMsg),
+            EMsg.ClientRequestWebAPIAuthenticateUserNonceResponse => new WebAPIUserNonceCallback(packetMsg),
+            EMsg.ClientVanityURLChangedNotification => new VanityURLChangedCallback(packetMsg),
+            EMsg.ClientMarketingMessageUpdate2 => new MarketingMessageCallback(packetMsg),
+            EMsg.ClientPlayingSessionState => new PlayingSessionStateCallback(packetMsg),
+            EMsg.ClientRequestEncryptedAppTicketResponse => new EncryptedAppTicketCallback(packetMsg),
             _ => null,
         };
 
@@ -222,26 +231,29 @@ namespace SteamKit2
         /// <param name="details">The details to use for logging on.</param>
         /// <exception cref="ArgumentNullException">No logon details were provided.</exception>
         /// <exception cref="ArgumentException">Username or password are not set within <paramref name="details"/>.</exception>
-        public void LogOn( LogOnDetails details )
+        public void LogOn(LogOnDetails details)
         {
-            ArgumentNullException.ThrowIfNull( details );
+            ArgumentNullException.ThrowIfNull(details);
 
-            if ( string.IsNullOrEmpty( details.Username ) || ( string.IsNullOrEmpty( details.Password ) && string.IsNullOrEmpty( details.AccessToken ) ) )
+            if (string.IsNullOrEmpty(details.Username) ||
+                (string.IsNullOrEmpty(details.Password) && string.IsNullOrEmpty(details.AccessToken)))
             {
-                throw new ArgumentException( "LogOn requires a username and password or access token to be set in 'details'." );
+                throw new ArgumentException(
+                    "LogOn requires a username and password or access token to be set in 'details'.");
             }
 
-            if ( !this.Client.IsConnected )
+            if (!this.Client.IsConnected)
             {
-                this.Client.PostCallback( new LoggedOnCallback( EResult.NoConnection ) );
+                this.Client.PostCallback(new LoggedOnCallback(EResult.NoConnection));
                 return;
             }
 
-            var logon = new ClientMsgProtobuf<CMsgClientLogon>( EMsg.ClientLogon );
+            var logon = new ClientMsgProtobuf<CMsgClientLogon>(EMsg.ClientLogon);
 
-            SteamID steamId = new SteamID( details.AccountID, details.AccountInstance, Client.Universe, EAccountType.Individual );
+            SteamID steamId = new SteamID(details.AccountID, details.AccountInstance, Client.Universe,
+                EAccountType.Individual);
 
-            if ( details.LoginID.HasValue )
+            if (details.LoginID.HasValue)
             {
                 // TODO: Support IPv6 login ids?
                 logon.Body.obfuscated_private_ip = new CMsgIPAddress
@@ -251,11 +263,12 @@ namespace SteamKit2
             }
             else
             {
-                logon.Body.obfuscated_private_ip = NetHelpers.GetMsgIPAddress( this.Client.LocalIP! ).ObfuscatePrivateIP();
+                logon.Body.obfuscated_private_ip =
+                    NetHelpers.GetMsgIPAddress(this.Client.LocalIP!).ObfuscatePrivateIP();
             }
 
             // Legacy field, Steam client still sets it
-            if ( logon.Body.obfuscated_private_ip.ShouldSerializev4() )
+            if (logon.Body.obfuscated_private_ip.ShouldSerializev4())
             {
                 logon.Body.deprecated_obfustucated_private_ip = logon.Body.obfuscated_private_ip.v4;
             }
@@ -268,7 +281,7 @@ namespace SteamKit2
             logon.Body.should_remember_password = details.ShouldRememberPassword;
 
             logon.Body.protocol_version = MsgClientLogon.CurrentProtocol;
-            logon.Body.client_os_type = ( uint )details.ClientOSType;
+            logon.Body.client_os_type = (uint)details.ClientOSType;
             logon.Body.client_language = details.ClientLanguage;
             logon.Body.cell_id = details.CellID ?? Client.Configuration.CellID;
 
@@ -278,19 +291,19 @@ namespace SteamKit2
             logon.Body.client_package_version = 1771; // todo: determine if this is still required
             logon.Body.supports_rate_limit_response = true;
             logon.Body.machine_name = details.MachineName;
-            logon.Body.machine_id = HardwareUtils.GetMachineID( Client.Configuration.MachineInfoProvider );
+            logon.Body.machine_id = HardwareUtils.GetMachineID(Client.Configuration.MachineInfoProvider);
 
-            if ( details.ChatMode != ChatMode.Default )
+            if (details.ChatMode != ChatMode.Default)
             {
-                logon.Body.chat_mode = ( uint )details.ChatMode;
-            }
-            
-            if ( details.UIMode != EUIMode.Unknown )
-            {
-                logon.Body.ui_mode = ( uint )details.UIMode;
+                logon.Body.chat_mode = (uint)details.ChatMode;
             }
 
-            if ( details.IsSteamDeck )
+            if (details.UIMode != EUIMode.Unknown)
+            {
+                logon.Body.ui_mode = (uint)details.UIMode;
+            }
+
+            if (details.IsSteamDeck)
             {
                 logon.Body.is_steam_deck = true;
             }
@@ -301,7 +314,7 @@ namespace SteamKit2
 
             logon.Body.access_token = details.AccessToken;
 
-            this.Client.Send( logon );
+            this.Client.Send(logon);
         }
 
         /// <summary>
@@ -311,39 +324,40 @@ namespace SteamKit2
         /// </summary>
         public void LogOnAnonymous()
         {
-            LogOnAnonymous( new AnonymousLogOnDetails() );
+            LogOnAnonymous(new AnonymousLogOnDetails());
         }
+
         /// <summary>
         /// Logs the client into the Steam3 network as an anonymous user.
         /// The client should already have been connected at this point.
         /// Results are returned in a <see cref="LoggedOnCallback"/>.
         /// </summary>
         /// <param name="details">The details to use for logging on.</param>
-        public void LogOnAnonymous( AnonymousLogOnDetails details )
+        public void LogOnAnonymous(AnonymousLogOnDetails details)
         {
-            ArgumentNullException.ThrowIfNull( details );
+            ArgumentNullException.ThrowIfNull(details);
 
-            if ( !this.Client.IsConnected )
+            if (!this.Client.IsConnected)
             {
-                this.Client.PostCallback( new LoggedOnCallback( EResult.NoConnection ) );
+                this.Client.PostCallback(new LoggedOnCallback(EResult.NoConnection));
                 return;
             }
 
-            var logon = new ClientMsgProtobuf<CMsgClientLogon>( EMsg.ClientLogon );
+            var logon = new ClientMsgProtobuf<CMsgClientLogon>(EMsg.ClientLogon);
 
-            SteamID auId = new SteamID( 0, 0, Client.Universe, EAccountType.AnonUser );
+            SteamID auId = new SteamID(0, 0, Client.Universe, EAccountType.AnonUser);
 
             logon.ProtoHeader.client_sessionid = 0;
             logon.ProtoHeader.steamid = auId.ConvertToUInt64();
 
             logon.Body.protocol_version = MsgClientLogon.CurrentProtocol;
-            logon.Body.client_os_type = ( uint )details.ClientOSType;
+            logon.Body.client_os_type = (uint)details.ClientOSType;
             logon.Body.client_language = details.ClientLanguage;
             logon.Body.cell_id = details.CellID ?? Client.Configuration.CellID;
 
-            logon.Body.machine_id = HardwareUtils.GetMachineID( Client.Configuration.MachineInfoProvider );
+            logon.Body.machine_id = HardwareUtils.GetMachineID(Client.Configuration.MachineInfoProvider);
 
-            this.Client.Send( logon );
+            this.Client.Send(logon);
         }
 
         /// <summary>
@@ -354,25 +368,37 @@ namespace SteamKit2
         {
             ExpectDisconnection = true;
 
-            var logOff = new ClientMsgProtobuf<CMsgClientLogOff>( EMsg.ClientLogOff );
-            this.Client.Send( logOff );
+            var logOff = new ClientMsgProtobuf<CMsgClientLogOff>(EMsg.ClientLogOff);
+            this.Client.Send(logOff);
         }
 
         /// <summary>
         /// Handles a client message. This should not be called directly.
         /// </summary>
         /// <param name="packetMsg">The packet message that contains the data.</param>
-        public override void HandleMsg( IPacketMsg packetMsg )
+        public override void HandleMsg(IPacketMsg packetMsg)
         {
-            var callback = GetCallback( packetMsg );
+            var callback = GetCallback(packetMsg);
 
-            if ( callback == null )
+            if (callback == null)
             {
                 // ignore messages that we don't have a handler function for
                 return;
             }
 
-            this.Client.PostCallback( callback );
+            this.Client.PostCallback(callback);
+        }
+
+        public void GetEncryptedAppTicket(uint appid)
+        {
+            this.Client.Send(
+                new ClientMsgProtobuf<CMsgClientRequestEncryptedAppTicket>(EMsg.ClientRequestEncryptedAppTicket)
+                {
+                    Body =
+                    {
+                        app_id = appid
+                    }
+                });
         }
     }
 }
