@@ -5,12 +5,21 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\admin\.nuget\packages\;D:\Microsoft Visual Studio\Shared\NuGetPackages</NuGetPackageFolders>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\cendy\.nuget\packages\;D:\Microsoft Visual Studio\Shared\NuGetPackages</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.10.1</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.11.1</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="C:\Users\admin\.nuget\packages\" />
+    <SourceRoot Include="C:\Users\cendy\.nuget\packages\" />
     <SourceRoot Include="D:\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.windows.sdk.win32metadata\60.0.34-preview\buildTransitive\netstandard1.0\Microsoft.Windows.SDK.Win32Metadata.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.sdk.win32metadata\60.0.34-preview\buildTransitive\netstandard1.0\Microsoft.Windows.SDK.Win32Metadata.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.windows.wdk.win32metadata\0.11.4-experimental\buildTransitive\netstandard1.0\Microsoft.Windows.WDK.Win32Metadata.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.wdk.win32metadata\0.11.4-experimental\buildTransitive\netstandard1.0\Microsoft.Windows.WDK.Win32Metadata.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.windows.sdk.win32docs\0.1.42-alpha\buildTransitive\netstandard1.0\Microsoft.Windows.SDK.Win32Docs.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.sdk.win32docs\0.1.42-alpha\buildTransitive\netstandard1.0\Microsoft.Windows.SDK.Win32Docs.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.windows.cswin32\0.3.106\build\netstandard1.0\Microsoft.Windows.CsWin32.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.cswin32\0.3.106\build\netstandard1.0\Microsoft.Windows.CsWin32.props')" />
+  </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgMicrosoft_Windows_CsWin32 Condition=" '$(PkgMicrosoft_Windows_CsWin32)' == '' ">C:\Users\cendy\.nuget\packages\microsoft.windows.cswin32\0.3.106</PkgMicrosoft_Windows_CsWin32>
+  </PropertyGroup>
 </Project>

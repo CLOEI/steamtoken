@@ -2,6 +2,80 @@
   "version": 3,
   "targets": {
     "net8.0": {
+      "Microsoft.NETCore.Platforms/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
+      "Microsoft.Win32.Registry/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Security.AccessControl": "5.0.0",
+          "System.Security.Principal.Windows": "5.0.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/Microsoft.Win32.Registry.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.Registry.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "Microsoft.Windows.CsWin32/0.3.106": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Windows.SDK.Win32Docs": "0.1.42-alpha",
+          "Microsoft.Windows.SDK.Win32Metadata": "60.0.34-preview",
+          "Microsoft.Windows.WDK.Win32Metadata": "0.11.4-experimental"
+        },
+        "build": {
+          "build/netstandard1.0/Microsoft.Windows.CsWin32.props": {}
+        }
+      },
+      "Microsoft.Windows.SDK.Win32Docs/0.1.42-alpha": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netstandard1.0/Microsoft.Windows.SDK.Win32Docs.props": {}
+        }
+      },
+      "Microsoft.Windows.SDK.Win32Metadata/60.0.34-preview": {
+        "type": "package",
+        "build": {
+          "buildTransitive/netstandard1.0/Microsoft.Windows.SDK.Win32Metadata.props": {}
+        }
+      },
+      "Microsoft.Windows.WDK.Win32Metadata/0.11.4-experimental": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Windows.SDK.Win32Metadata": "60.0.34-preview"
+        },
+        "build": {
+          "buildTransitive/netstandard1.0/Microsoft.Windows.WDK.Win32Metadata.props": {}
+        }
+      },
       "protobuf-net/3.2.30": {
         "type": "package",
         "dependencies": {
@@ -65,10 +139,203 @@
         "build": {
           "buildTransitive/net6.0/_._": {}
         }
+      },
+      "System.Security.AccessControl/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0",
+          "System.Security.Principal.Windows": "5.0.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Security.AccessControl.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.AccessControl.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.Security.Principal.Windows/5.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp3.0/System.Security.Principal.Windows.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Principal.Windows.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp2.1/System.Security.Principal.Windows.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netcoreapp2.1/System.Security.Principal.Windows.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
       }
     }
   },
   "libraries": {
+    "Microsoft.NETCore.Platforms/5.0.0": {
+      "sha512": "VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
+      "type": "package",
+      "path": "microsoft.netcore.platforms/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard1.0/_._",
+        "microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+        "microsoft.netcore.platforms.nuspec",
+        "runtime.json",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.Win32.Registry/5.0.0": {
+      "sha512": "dDoKi0PnDz31yAyETfRntsLArTlVAVzUzCIvvEDsDsucrl33Dl8pIJG06ePTJTI3tGpeyHS9Cq7Foc/s4EeKcg==",
+      "type": "package",
+      "path": "microsoft.win32.registry/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net46/Microsoft.Win32.Registry.dll",
+        "lib/net461/Microsoft.Win32.Registry.dll",
+        "lib/net461/Microsoft.Win32.Registry.xml",
+        "lib/netstandard1.3/Microsoft.Win32.Registry.dll",
+        "lib/netstandard2.0/Microsoft.Win32.Registry.dll",
+        "lib/netstandard2.0/Microsoft.Win32.Registry.xml",
+        "microsoft.win32.registry.5.0.0.nupkg.sha512",
+        "microsoft.win32.registry.nuspec",
+        "ref/net46/Microsoft.Win32.Registry.dll",
+        "ref/net461/Microsoft.Win32.Registry.dll",
+        "ref/net461/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/Microsoft.Win32.Registry.dll",
+        "ref/netstandard1.3/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/de/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/es/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/fr/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/it/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/ja/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/ko/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/ru/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/zh-hans/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/zh-hant/Microsoft.Win32.Registry.xml",
+        "ref/netstandard2.0/Microsoft.Win32.Registry.dll",
+        "ref/netstandard2.0/Microsoft.Win32.Registry.xml",
+        "runtimes/win/lib/net46/Microsoft.Win32.Registry.dll",
+        "runtimes/win/lib/net461/Microsoft.Win32.Registry.dll",
+        "runtimes/win/lib/net461/Microsoft.Win32.Registry.xml",
+        "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll",
+        "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.dll",
+        "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.xml",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.Windows.CsWin32/0.3.106": {
+      "sha512": "Mx5fK7uN6fwLR4wUghs6//HonAnwPBNmC2oonyJVhCUlHS/r6SUS3NkBc3+gaQiv+0/9bqdj1oSCKQFkNI+21Q==",
+      "type": "package",
+      "path": "microsoft.windows.cswin32/0.3.106",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "NOTICE.txt",
+        "README.md",
+        "analyzers/cs/MessagePack.Annotations.dll",
+        "analyzers/cs/MessagePack.dll",
+        "analyzers/cs/Microsoft.Bcl.AsyncInterfaces.dll",
+        "analyzers/cs/Microsoft.Windows.CsWin32.dll",
+        "analyzers/cs/Microsoft.Windows.SDK.Win32Docs.dll",
+        "analyzers/cs/System.Text.Encodings.Web.dll",
+        "analyzers/cs/System.Text.Json.dll",
+        "build/Microsoft.Windows.CsWin32.props",
+        "build/net20/Microsoft.Windows.CsWin32.props",
+        "build/netstandard1.0/Microsoft.Windows.CsWin32.props",
+        "microsoft.windows.cswin32.0.3.106.nupkg.sha512",
+        "microsoft.windows.cswin32.nuspec",
+        "readme.txt",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
+      ]
+    },
+    "Microsoft.Windows.SDK.Win32Docs/0.1.42-alpha": {
+      "sha512": "Z/9po23gUA9aoukirh2ItMU2ZS9++Js9Gdds9fu5yuMojDrmArvY2y+tq9985tR3cxFxpZO1O35Wjfo0khj5HA==",
+      "type": "package",
+      "path": "microsoft.windows.sdk.win32docs/0.1.42-alpha",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "apidocs.msgpack",
+        "buildTransitive/Microsoft.Windows.SDK.Win32Docs.props",
+        "buildTransitive/net20/Microsoft.Windows.SDK.Win32Docs.props",
+        "buildTransitive/netstandard1.0/Microsoft.Windows.SDK.Win32Docs.props",
+        "images/windows.png",
+        "lib/netstandard2.0/Microsoft.Windows.SDK.Win32Docs.dll",
+        "lib/netstandard2.0/Microsoft.Windows.SDK.Win32Docs.xml",
+        "microsoft.windows.sdk.win32docs.0.1.42-alpha.nupkg.sha512",
+        "microsoft.windows.sdk.win32docs.nuspec"
+      ]
+    },
+    "Microsoft.Windows.SDK.Win32Metadata/60.0.34-preview": {
+      "sha512": "TA3DUNi4CTeo+ItTXBnGZFt2159XOGSl0UOlG5vjDj4WHqZjhwYyyUnzOtrbCERiSaP2Hzg7otJNWwOSZgutyA==",
+      "type": "package",
+      "path": "microsoft.windows.sdk.win32metadata/60.0.34-preview",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Windows.Win32.winmd",
+        "build/Microsoft.Windows.SDK.Win32Metadata.props",
+        "build/net20/Microsoft.Windows.SDK.Win32Metadata.props",
+        "build/netstandard1.0/Microsoft.Windows.SDK.Win32Metadata.props",
+        "buildTransitive/Microsoft.Windows.SDK.Win32Metadata.props",
+        "buildTransitive/net20/Microsoft.Windows.SDK.Win32Metadata.props",
+        "buildTransitive/netstandard1.0/Microsoft.Windows.SDK.Win32Metadata.props",
+        "images/windows.png",
+        "microsoft.windows.sdk.win32metadata.60.0.34-preview.nupkg.sha512",
+        "microsoft.windows.sdk.win32metadata.nuspec",
+        "sdk_license.txt"
+      ]
+    },
+    "Microsoft.Windows.WDK.Win32Metadata/0.11.4-experimental": {
+      "sha512": "bf5MCmUyZf0gBlYQjx9UpRAZWBkRndyt9XicR+UNLvAUAFTZQbu6YaX/sNKZlR98Grn0gydfh/yT4I3vc0AIQA==",
+      "type": "package",
+      "path": "microsoft.windows.wdk.win32metadata/0.11.4-experimental",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Windows.Wdk.winmd",
+        "build/Microsoft.Windows.WDK.Win32Metadata.props",
+        "build/net20/Microsoft.Windows.WDK.Win32Metadata.props",
+        "build/netstandard1.0/Microsoft.Windows.WDK.Win32Metadata.props",
+        "buildTransitive/Microsoft.Windows.WDK.Win32Metadata.props",
+        "buildTransitive/net20/Microsoft.Windows.WDK.Win32Metadata.props",
+        "buildTransitive/netstandard1.0/Microsoft.Windows.WDK.Win32Metadata.props",
+        "images/windows.png",
+        "microsoft.windows.wdk.win32metadata.0.11.4-experimental.nupkg.sha512",
+        "microsoft.windows.wdk.win32metadata.nuspec",
+        "sdk_license.txt"
+      ]
+    },
     "protobuf-net/3.2.30": {
       "sha512": "C/UTlmxEJHAHpqm8xQK1UyJKaIynVCSNG4mVrbLgnZ7ccH28nN49O8iMJvKEodTgVbnimvy+3mIiAdW6mATwnw==",
       "type": "package",
@@ -166,32 +433,136 @@
         "system.io.hashing.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "System.Security.AccessControl/5.0.0": {
+      "sha512": "dagJ1mHZO3Ani8GH0PHpPEe/oYO+rVdbQjvjJkBRNQkX4t0r1iaeGn8+/ybkSLEan3/slM0t59SVdHzuHf2jmw==",
+      "type": "package",
+      "path": "system.security.accesscontrol/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net46/System.Security.AccessControl.dll",
+        "lib/net461/System.Security.AccessControl.dll",
+        "lib/net461/System.Security.AccessControl.xml",
+        "lib/netstandard1.3/System.Security.AccessControl.dll",
+        "lib/netstandard2.0/System.Security.AccessControl.dll",
+        "lib/netstandard2.0/System.Security.AccessControl.xml",
+        "lib/uap10.0.16299/_._",
+        "ref/net46/System.Security.AccessControl.dll",
+        "ref/net461/System.Security.AccessControl.dll",
+        "ref/net461/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/System.Security.AccessControl.dll",
+        "ref/netstandard1.3/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/de/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/es/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/fr/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/it/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/ja/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/ko/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/ru/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/zh-hans/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/zh-hant/System.Security.AccessControl.xml",
+        "ref/netstandard2.0/System.Security.AccessControl.dll",
+        "ref/netstandard2.0/System.Security.AccessControl.xml",
+        "ref/uap10.0.16299/_._",
+        "runtimes/win/lib/net46/System.Security.AccessControl.dll",
+        "runtimes/win/lib/net461/System.Security.AccessControl.dll",
+        "runtimes/win/lib/net461/System.Security.AccessControl.xml",
+        "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll",
+        "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.xml",
+        "runtimes/win/lib/netstandard1.3/System.Security.AccessControl.dll",
+        "runtimes/win/lib/uap10.0.16299/_._",
+        "system.security.accesscontrol.5.0.0.nupkg.sha512",
+        "system.security.accesscontrol.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Security.Principal.Windows/5.0.0": {
+      "sha512": "t0MGLukB5WAVU9bO3MGzvlGnyJPgUlcwerXn1kzBRjwLKixT96XV0Uza41W49gVd8zEMFu9vQEFlv0IOrytICA==",
+      "type": "package",
+      "path": "system.security.principal.windows/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net46/System.Security.Principal.Windows.dll",
+        "lib/net461/System.Security.Principal.Windows.dll",
+        "lib/net461/System.Security.Principal.Windows.xml",
+        "lib/netstandard1.3/System.Security.Principal.Windows.dll",
+        "lib/netstandard2.0/System.Security.Principal.Windows.dll",
+        "lib/netstandard2.0/System.Security.Principal.Windows.xml",
+        "lib/uap10.0.16299/_._",
+        "ref/net46/System.Security.Principal.Windows.dll",
+        "ref/net461/System.Security.Principal.Windows.dll",
+        "ref/net461/System.Security.Principal.Windows.xml",
+        "ref/netcoreapp3.0/System.Security.Principal.Windows.dll",
+        "ref/netcoreapp3.0/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/System.Security.Principal.Windows.dll",
+        "ref/netstandard1.3/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/de/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/es/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/fr/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/it/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/ja/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/ko/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/ru/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/zh-hans/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/zh-hant/System.Security.Principal.Windows.xml",
+        "ref/netstandard2.0/System.Security.Principal.Windows.dll",
+        "ref/netstandard2.0/System.Security.Principal.Windows.xml",
+        "ref/uap10.0.16299/_._",
+        "runtimes/unix/lib/netcoreapp2.0/System.Security.Principal.Windows.dll",
+        "runtimes/unix/lib/netcoreapp2.0/System.Security.Principal.Windows.xml",
+        "runtimes/unix/lib/netcoreapp2.1/System.Security.Principal.Windows.dll",
+        "runtimes/unix/lib/netcoreapp2.1/System.Security.Principal.Windows.xml",
+        "runtimes/win/lib/net46/System.Security.Principal.Windows.dll",
+        "runtimes/win/lib/net461/System.Security.Principal.Windows.dll",
+        "runtimes/win/lib/net461/System.Security.Principal.Windows.xml",
+        "runtimes/win/lib/netcoreapp2.0/System.Security.Principal.Windows.dll",
+        "runtimes/win/lib/netcoreapp2.0/System.Security.Principal.Windows.xml",
+        "runtimes/win/lib/netcoreapp2.1/System.Security.Principal.Windows.dll",
+        "runtimes/win/lib/netcoreapp2.1/System.Security.Principal.Windows.xml",
+        "runtimes/win/lib/netstandard1.3/System.Security.Principal.Windows.dll",
+        "runtimes/win/lib/uap10.0.16299/_._",
+        "system.security.principal.windows.5.0.0.nupkg.sha512",
+        "system.security.principal.windows.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Microsoft.Win32.Registry >= 5.0.0",
+      "Microsoft.Windows.CsWin32 >= 0.3.106",
       "System.IO.Hashing >= 8.0.0",
       "protobuf-net >= 3.2.30"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\admin\\.nuget\\packages\\": {},
+    "C:\\Users\\cendy\\.nuget\\packages\\": {},
     "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\steamtoken\\steamtoken\\steamtoken.csproj",
+      "projectUniqueName": "D:\\Projects\\Mori\\steamtoken\\steamtoken\\steamtoken.csproj",
       "projectName": "steamtoken",
-      "projectPath": "D:\\Projects\\steamtoken\\steamtoken\\steamtoken.csproj",
-      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\steamtoken\\steamtoken\\obj\\",
+      "projectPath": "D:\\Projects\\Mori\\steamtoken\\steamtoken\\steamtoken.csproj",
+      "packagesPath": "C:\\Users\\cendy\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\Mori\\steamtoken\\steamtoken\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\cendy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -200,7 +571,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -224,6 +594,16 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Microsoft.Win32.Registry": {
+            "target": "Package",
+            "version": "[5.0.0, )"
+          },
+          "Microsoft.Windows.CsWin32": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[0.3.106, )"
+          },
           "System.IO.Hashing": {
             "target": "Package",
             "version": "[8.0.0, )"
@@ -249,7 +629,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

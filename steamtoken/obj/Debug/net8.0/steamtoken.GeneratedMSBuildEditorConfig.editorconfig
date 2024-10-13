@@ -1,4 +1,6 @@
 is_global = true
+build_property.CsWin32InputMetadataPaths = C:\Users\cendy\.nuget\packages\microsoft.windows.sdk.win32metadata\60.0.34-preview\Windows.Win32.winmd|C:\Users\cendy\.nuget\packages\microsoft.windows.wdk.win32metadata\0.11.4-experimental\Windows.Wdk.winmd
+build_property.CsWin32InputDocPaths = C:\Users\cendy\.nuget\packages\microsoft.windows.sdk.win32docs\0.1.42-alpha\apidocs.msgpack
 build_property.TargetFramework = net8.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = 
@@ -8,6 +10,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = steamtoken
-build_property.ProjectDir = D:\Projects\steamtoken\steamtoken\
+build_property.ProjectDir = D:\Projects\Mori\steamtoken\steamtoken\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

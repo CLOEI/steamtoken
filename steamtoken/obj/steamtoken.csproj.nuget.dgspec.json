@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\steamtoken\\steamtoken\\steamtoken.csproj": {}
+    "D:\\Projects\\Mori\\steamtoken\\steamtoken\\steamtoken.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\steamtoken\\steamtoken\\steamtoken.csproj": {
+    "D:\\Projects\\Mori\\steamtoken\\steamtoken\\steamtoken.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\steamtoken\\steamtoken\\steamtoken.csproj",
+        "projectUniqueName": "D:\\Projects\\Mori\\steamtoken\\steamtoken\\steamtoken.csproj",
         "projectName": "steamtoken",
-        "projectPath": "D:\\Projects\\steamtoken\\steamtoken\\steamtoken.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\steamtoken\\steamtoken\\obj\\",
+        "projectPath": "D:\\Projects\\Mori\\steamtoken\\steamtoken\\steamtoken.csproj",
+        "packagesPath": "C:\\Users\\cendy\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\Mori\\steamtoken\\steamtoken\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cendy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -50,6 +49,16 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.Win32.Registry": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Windows.CsWin32": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.3.106, )"
+            },
             "System.IO.Hashing": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -75,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
